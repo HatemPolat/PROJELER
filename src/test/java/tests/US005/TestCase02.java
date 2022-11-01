@@ -1,4 +1,4 @@
-package tests.US007;
+package tests.US005;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -7,12 +7,16 @@ import org.testng.annotations.Test;
 import pages.Hatem_PearlyMarketPage;
 import utilities.ConfigReader;
 import utilities.Driver;
+import utilities.ReusableMethods;
 
-public class TestCase01 {
+public class TestCase02 {
+
+
     Hatem_PearlyMarketPage pearlyMarketPage = new Hatem_PearlyMarketPage();
-    Actions actions = new Actions(Driver.getDriver());
+
     @Test
-    public void test() throws InterruptedException {
+    public void test(){
+        Actions actions = new Actions(Driver.getDriver());
         //Store Manager  https://pearlymarket.com/ adresine gider
         Driver.getDriver().get(ConfigReader.getProperty("pearlyMarketUrl"));
 
@@ -31,19 +35,16 @@ public class TestCase01 {
         pearlyMarketPage.storeManagerLogin.click();
         //Store Manager Products sekmesine tiklar
         actions.sendKeys(Keys.PAGE_DOWN).perform();
+        ReusableMethods.waitFor(1);
         pearlyMarketPage.products.click();
+
         //Store Manager Add New Product simgesine tiklar
         pearlyMarketPage.addNewButton.click();
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-        actions.sendKeys(Keys.PAGE_DOWN).perform();
-        Thread.sleep(1000);
-        //Product brands  menusunun gorunur oldugunu dogrular
-        Assert.assertTrue(pearlyMarketPage.productsMenuBrand.isDisplayed());
-        //Product brands menusunden Elegant Auto group urununun brandinin  oldugunu dogrular ve tiklar
-        Assert.assertTrue(pearlyMarketPage.elegant_Auto_Group.isDisplayed());
-        pearlyMarketPage.elegant_Auto_Group.click();
+        //Store Manager urun icin virtual veya downloadable secenegi oldugunu gorur
+        Assert.assertTrue(pearlyMarketPage.isVirtual.isDisplayed());
+        Assert.assertTrue(pearlyMarketPage.downloadable.isDisplayed());
 
-
+        
 
 
     }

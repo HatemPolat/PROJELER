@@ -8,7 +8,7 @@ import pages.Hatem_PearlyMarketPage;
 import utilities.ConfigReader;
 import utilities.Driver;
 
-public class TestCase01 {
+public class TestCase06 {
     Hatem_PearlyMarketPage pearlyMarketPage = new Hatem_PearlyMarketPage();
     Actions actions = new Actions(Driver.getDriver());
     @Test
@@ -39,10 +39,9 @@ public class TestCase01 {
         Thread.sleep(1000);
         //Product brands  menusunun gorunur oldugunu dogrular
         Assert.assertTrue(pearlyMarketPage.productsMenuBrand.isDisplayed());
-        //Product brands menusunden Elegant Auto group urununun brandinin  oldugunu dogrular ve tiklar
-        Assert.assertTrue(pearlyMarketPage.elegant_Auto_Group.isDisplayed());
-        pearlyMarketPage.elegant_Auto_Group.click();
-
+        //Product brands menusunden  SkySuite Tech urununun brandinin  oldugunu dogrular ve tiklar
+        Assert.assertTrue(pearlyMarketPage.skySuite_Tech.isDisplayed());
+        pearlyMarketPage.skySuite_Tech.click();
 
 
 
